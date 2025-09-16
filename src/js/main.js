@@ -14,9 +14,10 @@ window.onload = () => {
     });
 
 
-    document.getElementById("form").addEventListener("submit", createJobForm);
+    document.getElementById("form").addEventListener("submit", createJobForm); //FÅR FELEMEDDELANDE OM ATT DET ÄR NULL
 }
 
+//hämta jobb
 async function getJob() {
     try {
         const response = await fetch(url, {
@@ -25,14 +26,14 @@ async function getJob() {
         });
 
         if (!response.ok) {
-            return [];
+            throw new Error(`Ett HTTP-fel har inträffat: ${response.status}`);
         }
 
         const result = await response.json();
-        console.log(result);
         return result;
-    } catch {
-
+    } catch(error) {
+        console.log("Ett  fel har uppstått vid hämtning av jobb:", error);
+        return [];
     }
 }
 
@@ -71,8 +72,8 @@ async function deleteJob(id) {
 
         return response.ok;
 
-    } catch {
-
+    } catch(error) {
+        console.log("Det uppstod ett fel vid borttagning av jobb: ", error);
     }
 }
 
@@ -88,32 +89,64 @@ function createJobForm(event) {
 }  
 
 function render(jobs) {
-    const container = document.getElementById("container");
-    container.innerHTML = "";
+    const containerEl = document.getElementById("container");
+    containerEl .innerHTML = "";
     console.log(jobs);
 
     jobs.forEach(job => {
-        const card = document.createElement("div");
-        card.className = "card";
+        //article
+        const articleEl = document.createElement("article");
 
-        const title = document.createElement("h3");
-        title.textContent = job.jobTitle;
+        //jobbtitel
+        const jobTitleEl = document.createElement("h2");
+        jobTitleEl.textContent = job.job_title;
 
-        const company = document.createElement("p");
-        company.textContent = `Företag: ${job.companyName}`;
+        //företagsnamn
+        const companyNameTitleEl = document.createElement("h3");
+        companyNameTitleEl.innerHTML = "<b>Företagsnamn: </b>";
+        const companyNameEl = document.createElement("p");
 
-        const date = document.createElement("p");
-        date.className = "date";
-        date.textContent = `Sista ansökningsdag: ${job.endDate}`;
+        companyNameEl.textContent = job.company_name;
 
-        const desc = document.createElement("p");
-        desc.textContent = job.description;
+        //slutdatum
+        const endDateTitleEl = document.createElement("h3");
+        endDateTitleEl.innerHTML = "<b>Slutdatum: </b>";
 
-        card.appendChild(title);
-        card.appendChild(company);
-        card.appendChild(date);
-        card.appendChild(desc);
+        const endDateEl = document.createElement("p");
+        endDateEl.textContent = job.end_date;
 
-        container.appendChild(card);
+        //beskrivning
+        const descTitleEl = document.createElement("h3");
+        descTitleEl.innerHTML = `<b>Beskrivning:</b>`
+
+        const descEl = document.createElement("p");
+        descEl.textContent = job.description;
+
+        //radbrytning
+        const lineBreakEl = document.createElement("br");
+
+        //ta bort-knapp
+        const deleteButtonEl = document.createElement("button");
+        deleteButtonEl.textContent = "Ta bort jobb";
+
+        //ta bort jobb vid klick och sedan uppdatera listan
+        deleteButtonEl.onclick = () => {
+            deleteJob(job.id).then(() => {
+                getJob().then(render);
+            });
+        }
+
+        //lägger till allt till 
+        articleEl.appendChild(jobTitleEl);
+        articleEl.appendChild(companyNameTitleEl);
+        articleEl.appendChild(companyNameEl);
+        articleEl.appendChild(endDateTitleEl);
+        articleEl.appendChild(endDateEl);
+        articleEl.appendChild(descTitleEl);
+        articleEl.appendChild(lineBreakEl);
+        articleEl.appendChild(descEl);
+        articleEl.appendChild(deleteButtonEl);
+
+        containerEl.appendChild(articleEl);
     });
 }
