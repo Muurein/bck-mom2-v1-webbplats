@@ -12,33 +12,61 @@
 </head>
 <body>
 
-    <form id="form">
-        <div>
-            <label for="companyName">Företagsnamn:</label>
-            <br>
-            <input type="text" id="companyName" name="companyName">
-        </div>
+    <header>
+        <nav>
+            <ul class="main-menu">
+                <li><a href="index.html">Startsida</a></li>
+                <li id="current-page">Lägg till jobb</li>
+                <li><a href="about.html">Om sidan</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <div>
-            <label for="jobTitle">Jobbtitel:</label>
-            <br>
-            <input type="text" id="jobTitle" name="jobTitle">
-        </div>
+    <h1>Lägg till jobb</h1>
+    <main class="main-form">
         
-        <div>
-            <label for="endDate">Avslutningsdatum:</label>
-            <br>
-            <input type="text" id="endDate" name="endDate">
-        </div>
-        
-        <div>
-            <label for="description">Jobbeskrivning:</label>
-            <br>
-            <input type="text" id="description" name="description">
-        </div>
+        <form id="form">
+            <h2>Formulär</h2>
+            <div>
+                <label for="companyName">Företagsnamn:</label>
+                <br>
+                <input type="text" id="companyName" name="companyName" value="Ex. Tullverket">
+            </div>
 
-         <input id="addCourseButton" type="submit" value="Lägg till kurs">
-    </form>
+            <div>
+                <label for="jobTitle">Jobbtitel:</label>
+                <br>
+                <input type="text" id="jobTitle" name="jobTitle" value="Ex. Administratör">
+            </div>
+            
+            <div>
+                <label for="endDate">Avslutningsdatum:</label>
+                <br>
+                <input type="text" id="endDate" name="endDate" value="Ex. 2022-07-31">
+            </div>
+            
+            <div>
+                <label for="description">Jobbeskrivning:</label>
+                <br>
+                <input type="text" id="description" name="description" value="Ex. Handläggde ärenden">
+            </div>
+
+            <input class="add-job" type="submit" value="Lägg till kurs">
+        </form>
+
+        <aside>
+            <h2>Instruktioner</h2>
+            <ul>
+                <li>Ta bort exemplen i rutorna innan du börjar skriva in din information</li>
+                <li>Fyll i alla fält</li>
+                <li>Datum ska skrivas år-månad-dag</li>
+            </ul>
+        </aside>
+    </main>
+
+    <footer>
+        <p>Amanda Thim - amth2302</p>
+    </footer>
     
 </body>
 </html>
