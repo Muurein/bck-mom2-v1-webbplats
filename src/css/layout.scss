@@ -56,7 +56,6 @@ a {
 
 
 
-
 //STARTSIDA
 h1 {
     background-color: white;
@@ -129,15 +128,42 @@ aside {
 
 
 
+
+//OM SIDAN
+.main-about {
+    @include main-mobile;
+    max-width: 80%;
+}
+
+.main-about div {
+    @include main-contents-mobile;
+    line-height: 1.4em;
+    padding: 15%;
+}
+
+.article-margin {
+    margin-top: 4.5em;
+}
+
+.main-about h2, .main-about h3 {
+    margin-bottom:1em;
+}
+
+
+//FOOTER
 footer {
     background-color: base.$color-primary;
     padding: 5%;
     text-align: center;
     margin-top: 8%;
     color: white;
+    bottom: 0;
 }
 
-//tablet 
+
+
+
+//TABLET
 @media (min-width: 600px) {
     
     // body {
@@ -155,6 +181,9 @@ footer {
         margin-top: 1.5em;
     }
 
+
+
+    //STARTSIDAN
     #container {
         max-width: 50%;
         margin-top: 1.5em;
@@ -164,6 +193,8 @@ footer {
         margin-left: 0%;
     }
 
+
+    //FORMULÄR
     .main-form {
         max-width: 100%;
         margin-top: 1.5em;
@@ -203,10 +234,17 @@ footer {
     }
 
 
+
+    //OM SIDAN
+    .main-about div {
+        padding: 10%;
+    }
+
+
 }
 
 
-//desktop
+//DESKTOP
 @media (min-width: 1024px) {
     
     // body {
@@ -225,6 +263,8 @@ footer {
         padding-left: 5%;
     }
     
+
+    //STARTSIDAN
     #container {
         margin-left: 5%;
         max-width: 80%;
@@ -242,6 +282,8 @@ footer {
         margin-top: 1%;
     }
 
+
+    //FORMULÄR
     .main-form {
         margin-bottom: 1.5em;
     }
@@ -251,17 +293,42 @@ footer {
         padding-left: 6%;
     }
 
+
+
+
+    //OM SIDAN
+    .main-about {
+        margin-left: 5.5%;
+        margin-top: 4em;
+        margin-bottom: 4em;
+    }
+
+    .main-about div {
+        padding: 5.5%;
+        max-width: 80%;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .article-margin {
+        margin-top: 0;
+        margin-left: 8em;
+    }
+
+
+
+
+
+
+    //FOOTER
     footer {
         padding: 1.5%;
         margin-top: 0em;
     }
 
+    .footer-about {
+        position: fixed;
+        width: 100%;
+    }
+
 }
-
-
-// @media (min-width:1460px) {
-
-//     body {
-//         background-color: chocolate;
-//     }
-// }

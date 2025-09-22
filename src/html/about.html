@@ -24,21 +24,47 @@
 
     <h1>Om sidan</h1>
 
-    <main class="main-form">
-        <article>
+    <main class="main-about">
+        <div>
+            <article>
             <h2>Webbplatsen</h2>
             <p>
                 Webbplatsen ska fungera som ett CV där användarens 
-                arbetserfarenhet ska synas. Man kan också lägga till nya 
-                erfarenheter genom ett formulär.
+                arbetserfarenhet ska synas tillsammans med en "ta bort"-knapp. 
+                Man kan också lägga till nya erfarenheter genom ett formulär.
             </p>
             <p>
-                Erfarenheterna sparas i en databas och 
+                Erfarenheterna lagras i en databas (byggd på PostgreSQL) och 
+                fungerar som en REST-baserad webbtjänst. CRUD-operationerna GET,
+                POST och DELETE används för att se jobben, skapa nya arbetserfarenheter, 
+                samt för att ta bort dem .
             </p>
-        </article>
+            </article>
+
+            <article class="article-margin">
+            <h3>Slutsatser</h3>
+            <p>
+                Jag tyckte det var svårt att verkligen "wrap my head around" kring hur allt
+                hänger ihop (CRUD, webbtjänst och webbplats), men fick ihop det i slutändan. 
+                
+            </p>
+            <p>
+                Trots att det har varit svårt har det varit roligt att se fler sätt man kan 
+                använda sig av databaser på. Det var också roligt att börja testa att skapa 
+                egna webbtjänster, speciellt eftersom de har varit en så stor del av många 
+                tidigare uppgifter. 
+            </p>
+            <p>
+                Rent generellt känns det bara bra att det är så många praktiska moment i programmet.
+                Att hela tiden behöva skapa webbplatser, även om de är små, känns lärorikt och ger en 
+                flera tillfällen att utforska olika uppsättningar, även om de är enkla och inte 
+                alltid är den bästa lösningen.
+            </p>
+            </article>
+        </div>
     </main>
 
-    <footer>
+    <footer class="footer-about">
         <p>Amanda Thim - amth2302</p>
     </footer>
     
