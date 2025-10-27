@@ -13,8 +13,8 @@ window.onload = () => {
         render(result);
     });
 
-
-    document.getElementById("form").addEventListener("submit", createJobForm); //FÅR FELEMEDDELANDE OM ATT DET ÄR NULL
+    //hämta formuläret
+    document.getElementById("form").addEventListener("submit", createJobForm); 
 }
 
 //hämta jobb
@@ -37,7 +37,7 @@ async function getJob() {
     }
 }
 
-//lägg til ltry-catch, lägg till utifall fail
+//skapa jobb
 async function createJob(companyName, jobTitle, endDate, description) {
     try {
             let jobs = {
@@ -54,15 +54,13 @@ async function createJob(companyName, jobTitle, endDate, description) {
             body: JSON.stringify(jobs),
         });
 
-
-
         const data = await response.json();
-        console.log(data);
     } catch(error) {
-        console.log(error);
+        console.log("Ett fel har uppstått vid skapandet av jobb: ", error);
     }
 }
 
+//ta bort jobb
 async function deleteJob(id) {
     try {
         const response = await fetch(url + `/${id}`, {
@@ -73,10 +71,11 @@ async function deleteJob(id) {
         return response.ok;
 
     } catch(error) {
-        console.log("Det uppstod ett fel vid borttagning av jobb: ", error);
+        console.log("Ett fel har uppstått vid borttagningen av jobb: ", error);
     }
 }
 
+//hämta informationen från formuläret
 function createJobForm(event) {
     event.preventDefault(); 
    
@@ -88,10 +87,10 @@ function createJobForm(event) {
     createJob(companyName, jobTitle, endDate, description);
 }  
 
+//skriv ut jobb
 function render(jobs) {
     const containerEl = document.getElementById("container");
     containerEl .innerHTML = "";
-    console.log(jobs);
 
     jobs.forEach(job => {
         //article
@@ -104,8 +103,8 @@ function render(jobs) {
         //företagsnamn
         const companyNameTitleEl = document.createElement("h3");
         companyNameTitleEl.innerHTML = "<b>Företagsnamn: </b>";
-        const companyNameEl = document.createElement("p");
 
+        const companyNameEl = document.createElement("p");
         companyNameEl.textContent = job.company_name;
 
         //slutdatum
@@ -117,7 +116,7 @@ function render(jobs) {
 
         //beskrivning
         const descTitleEl = document.createElement("h3");
-        descTitleEl.innerHTML = `<b>Beskrivning:</b>`
+        descTitleEl.innerHTML = "<b>Beskrivning:</b>"
 
         const descEl = document.createElement("p");
         descEl.textContent = job.description;
@@ -136,7 +135,7 @@ function render(jobs) {
             });
         }
 
-        //lägger till allt till 
+        //lägger till allt i containerEl
         articleEl.appendChild(jobTitleEl);
         articleEl.appendChild(companyNameTitleEl);
         articleEl.appendChild(companyNameEl);

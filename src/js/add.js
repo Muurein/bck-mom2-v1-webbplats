@@ -1,1 +1,0 @@
-document.getElementById("form").addEventListener("submit", createJobForm);

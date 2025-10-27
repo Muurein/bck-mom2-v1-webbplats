@@ -1,0 +1,13 @@
+# Moment 2 - introduktion till webbtjänster, Backend-baserad webbutveckling
+
+Sidan låter användaren fylla i tidigare arbetslivserfarenheter via ett formulär. Datan visas sedan på startsidan och sparas i en databas skapad med hjälp av Render och Postgres.
+
+Följande CRUD-operationer används:
+- GET: hämtar jobben från databasen och visar dem på startsidan
+- POST: användaren skapar nya object genom att fylla in och skicka in formuläret på 
+- DELETE: användaren kan ta bort jobb genom att klicka på knappen som hör till jobbet som ska bort
+
+Följande undersidor finns:
+- Startida: här visas alla jobb
+- Lägg till jobb: här finns formuläret för att skapa nya jobberfarenheter
+- Om sidan: en förklaring av webbplatsen samt mina egna slutsatser

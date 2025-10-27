@@ -85,6 +85,10 @@ h1 {
     margin-top: 0.6em;
 }
 
+#container article button {
+    @include button(base.$color-primary);
+}
+
 
 
 
